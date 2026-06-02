@@ -1,9 +1,22 @@
-# About
-This is the demo site for [Fuwari](https://github.com/saicaca/fuwari).
+# 我是谁？
 
-::github{repo="saicaca/fuwari"}
+- 人群中一个平平无奇的前端工程师，因为太懒玩腻了才会想起来学习
+- 自大二暑假开始学习前端
 
-> ### Sources of images used in this site
-> - [Unsplash](https://unsplash.com/)
-> - [星と少女](https://www.pixiv.net/artworks/108916539) by [Stella](https://www.pixiv.net/users/93273965)
-> - [Rabbit - v1.4 Showcase](https://civitai.com/posts/586908) by [Rabbit_YourMajesty](https://civitai.com/user/Rabbit_YourMajesty)
+# 现在正在进行的是？
+
+- 2022/7/20 暑假开始学习前端
+- 2022/9/10 不行不行，得开始学习了
+- 2022/10/18 学习 vue2，并练项目
+- 2022/11/09 准备寒假找个实习
+- 2022/12/17 疫情又来了，学校突然赶人了，放假了
+- 2023/3/06 开学了，玩了三个月什么东西都忘记了，开始学，并开始找实习
+- 2023/3/14 入职第一家实习
+- 2023/5/04 干得好无聊，天天干测试，离职了
+- 2023/5/29 体验学校生活，开始学习并准备找下一段实习
+
+# 前端学习成果历程
+
+- 太菜了，以后再补吧
+
+::github{repo="147cai/liuhuan-blog"}

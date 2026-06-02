@@ -1,99 +1,91 @@
-# 🍥Fuwari  
-![Node.js >= 20](https://img.shields.io/badge/node.js-%3E%3D20-brightgreen) 
-![pnpm >= 9](https://img.shields.io/badge/pnpm-%3E%3D9-blue) 
-[![DeepWiki](https://img.shields.io/badge/DeepWiki-saicaca%2Ffuwari-blue.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAyCAYAAAAnWDnqAAAAAXNSR0IArs4c6QAAA05JREFUaEPtmUtyEzEQhtWTQyQLHNak2AB7ZnyXZMEjXMGeK/AIi+QuHrMnbChYY7MIh8g01fJoopFb0uhhEqqcbWTp06/uv1saEDv4O3n3dV60RfP947Mm9/SQc0ICFQgzfc4CYZoTPAswgSJCCUJUnAAoRHOAUOcATwbmVLWdGoH//PB8mnKqScAhsD0kYP3j/Yt5LPQe2KvcXmGvRHcDnpxfL2zOYJ1mFwrryWTz0advv1Ut4CJgf5uhDuDj5eUcAUoahrdY/56ebRWeraTjMt/00Sh3UDtjgHtQNHwcRGOC98BJEAEymycmYcWwOprTgcB6VZ5JK5TAJ+fXGLBm3FDAmn6oPPjR4rKCAoJCal2eAiQp2x0vxTPB3ALO2CRkwmDy5WohzBDwSEFKRwPbknEggCPB/imwrycgxX2NzoMCHhPkDwqYMr9tRcP5qNrMZHkVnOjRMWwLCcr8ohBVb1OMjxLwGCvjTikrsBOiA6fNyCrm8V1rP93iVPpwaE+gO0SsWmPiXB+jikdf6SizrT5qKasx5j8ABbHpFTx+vFXp9EnYQmLx02h1QTTrl6eDqxLnGjporxl3NL3agEvXdT0WmEost648sQOYAeJS9Q7bfUVoMGnjo4AZdUMQku50McDcMWcBPvr0SzbTAFDfvJqwLzgxwATnCgnp4wDl6Aa+Ax283gghmj+vj7feE2KBBRMW3FzOpLOADl0Isb5587h/U4gGvkt5v60Z1VLG8BhYjbzRwyQZemwAd6cCR5/XFWLYZRIMpX39AR0tjaGGiGzLVyhse5C9RKC6ai42ppWPKiBagOvaYk8lO7DajerabOZP46Lby5wKjw1HCRx7p9sVMOWGzb/vA1hwiWc6jm3MvQDTogQkiqIhJV0nBQBTU+3okKCFDy9WwferkHjtxib7t3xIUQtHxnIwtx4mpg26/HfwVNVDb4oI9RHmx5WGelRVlrtiw43zboCLaxv46AZeB3IlTkwouebTr1y2NjSpHz68WNFjHvupy3q8TFn3Hos2IAk4Ju5dCo8B3wP7VPr/FGaKiG+T+v+TQqIrOqMTL1VdWV1DdmcbO8KXBz6esmYWYKPwDL5b5FA1a0hwapHiom0r/cKaoqr+27/XcrS5UwSMbQAAAABJRU5ErkJggg==)](https://deepwiki.com/saicaca/fuwari)
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fsaicaca%2Ffuwari.svg?type=shield&issueType=license)](https://app.fossa.com/projects/git%2Bgithub.com%2Fsaicaca%2Ffuwari?ref=badge_shield&issueType=license)
+# 刘欢の博客
 
-A static blog template built with [Astro](https://astro.build).
+> 整这么花，你不要命了！
 
-[**🖥️ Live Demo (Vercel)**](https://fuwari.vercel.app)
+一个基于 [Astro](https://astro.build) 的个人博客，由 Hexo（shoka 主题）迁移而来，在 [Fuwari](https://github.com/saicaca/fuwari) 主题基础上做了大量样式与功能定制，整体观感向原 shoka 主题靠拢。
 
-![Preview Image](https://raw.githubusercontent.com/saicaca/resource/main/fuwari/home.png)
+## ✨ 特性
 
-🌏 README in
-[**中文**](https://github.com/saicaca/fuwari/blob/main/docs/README.zh-CN.md) /
-[**日本語**](https://github.com/saicaca/fuwari/blob/main/docs/README.ja.md) /
-[**한국어**](https://github.com/saicaca/fuwari/blob/main/docs/README.ko.md) /
-[**Español**](https://github.com/saicaca/fuwari/blob/main/docs/README.es.md) /
-[**ไทย**](https://github.com/saicaca/fuwari/blob/main/docs/README.th.md) /
-[**Tiếng Việt**](https://github.com/saicaca/fuwari/blob/main/docs/README.vi.md) /
-[**Bahasa Indonesia**](https://github.com/saicaca/fuwari/blob/main/docs/README.id.md) (Provided by the community and may not always be up-to-date)
+- ⚡️ 基于 Astro + Tailwind CSS，静态生成，加载快
+- 🎞️ 首页/各页**全屏头图**：多图轮播 + 缓慢放大（Ken Burns）+ 动态波浪分隔 + 透明导航栏
+- 🪟 头图上的玻璃质感标题文字（可在配置里编辑）
+- 🎵 仿 shoka 的**黑胶唱片音乐播放器**（多歌单 Tab 切换，数据来自网易云/QQ音乐）
+- 🌗 亮 / 暗模式，主题色可调
+- 🔍 全文搜索（Pagefind）
+- 📑 文章目录、RSS、归档、标签 / 分类
+- 🖼️ 文章卡片在未设封面时自动从图库回退封面图（杂志卡片风格）
 
-## ✨ Features
+## 🧱 技术栈
 
-- [x] Built with [Astro](https://astro.build) and [Tailwind CSS](https://tailwindcss.com)
-- [x] Smooth animations and page transitions
-- [x] Light / dark mode
-- [x] Customizable theme colors & banner
-- [x] Responsive design
-- [x] Search functionality with [Pagefind](https://pagefind.app/)
-- [x] [Markdown extended features](https://github.com/saicaca/fuwari?tab=readme-ov-file#-markdown-extended-syntax)
-- [x] Table of contents
-- [x] RSS feed
+| 用途 | 技术 |
+| --- | --- |
+| 框架 | [Astro](https://astro.build) 5 |
+| 样式 | [Tailwind CSS](https://tailwindcss.com) 3 + Stylus |
+| 交互组件 | [Svelte](https://svelte.dev) 5（搜索、音乐播放器等局部岛屿） |
+| 搜索 | [Pagefind](https://pagefind.app/) |
+| 内容 | Markdown（Astro Content Collections） |
+| 包管理 | [pnpm](https://pnpm.io) 9 |
+| 音乐数据 | Meting API（`https://api.injahow.cn/meting/`） |
 
-## 🚀 Getting Started
+## 📂 目录结构
 
-1. Create your blog repository:
-    - [Generate a new repository](https://github.com/saicaca/fuwari/generate) from this template or fork this repository.
-    - Or run one of the following commands:
-       ```sh
-       npm create fuwari@latest
-       yarn create fuwari
-       pnpm create fuwari@latest
-       bun create fuwari@latest
-       deno run -A npm:create-fuwari@latest
-       ```
-2. To edit your blog locally, clone your repository, run `pnpm install` to install dependencies.
-    - Install [pnpm](https://pnpm.io) `npm install -g pnpm` if you haven't.
-3. Edit the config file `src/config.ts` to customize your blog.
-4. Run `pnpm new-post <filename>` to create a new post and edit it in `src/content/posts/`.
-5. Deploy your blog to Vercel, Netlify, GitHub Pages, etc. following [the guides](https://docs.astro.build/en/guides/deploy/). You need to edit the site configuration in `astro.config.mjs` before deployment.
-
-## 📝 Frontmatter of Posts
-
-```yaml
----
-title: My First Blog Post
-published: 2023-09-09
-description: This is the first post of my new Astro blog.
-image: ./cover.jpg
-tags: [Foo, Bar]
-category: Front-end
-draft: false
-lang: jp      # Set only if the post's language differs from the site's language in `config.ts`
----
+```
+blog-astro/
+├── public/                  # 静态资源（直接按 / 路径引用）
+│   ├── img/header_img/       # 头图轮播 & 文章封面图库
+│   ├── cdn/                  # 文章正文里用到的图片（life / note）
+│   ├── music/                # 黑胶播放器素材（唱片、唱针）
+│   └── favicon/              # 网站图标
+├── src/
+│   ├── assets/images/        # 头像等需被构建处理的图片
+│   ├── components/           # 组件
+│   │   ├── MusicPlayer.svelte # 黑胶音乐播放器
+│   │   ├── PostCard.astro     # 文章卡片（含封面回退逻辑）
+│   │   ├── Navbar.astro       # 导航栏
+│   │   └── widget/ control/ misc/
+│   ├── content/
+│   │   ├── posts/             # 所有文章（.md）
+│   │   └── spec/about.md      # 关于页内容
+│   ├── layouts/
+│   │   ├── Layout.astro        # 全局布局（含头图/导航/主题脚本）
+│   │   └── MainGridLayout.astro# 主网格布局（头图轮播 + 波浪 + 标题）
+│   ├── pages/                 # 路由页面
+│   │   ├── archive.astro       # 归档
+│   │   ├── about.astro         # 关于
+│   │   ├── music.astro         # 歌单
+│   │   └── posts/[...slug].astro
+│   ├── styles/                # 全局样式（含 variables.styl 主题变量）
+│   ├── plugins/               # remark / rehype Markdown 扩展
+│   ├── i18n/  constants/  types/  utils/
+│   └── config.ts              # 🔧 站点主配置（标题/头图/导航/头像/banner文字）
+├── scripts/
+│   ├── new-post.js            # 新建文章脚本
+│   └── gen-favicon.mjs        # 用头像生成 favicon
+├── astro.config.mjs           # Astro 配置（含 site 域名）
+├── 使用指南.md                 # 本地启动 / 写文章 / 部署的详细中文教程
+└── package.json
 ```
 
-## 🧩 Markdown Extended Syntax
+## 🚀 快速开始
 
-In addition to Astro's default support for [GitHub Flavored Markdown](https://github.github.com/gfm/), several extra Markdown features are included:
+```bash
+pnpm install   # 安装依赖
+pnpm dev       # 本地开发（默认 http://localhost:4321）
+pnpm build     # 构建生产版本到 dist/
+pnpm preview   # 预览构建产物
+pnpm new-post 文章名   # 新建一篇文章
+```
 
-- Admonitions ([Preview and Usage](https://fuwari.vercel.app/posts/markdown-extended/#admonitions))
-- GitHub repository cards ([Preview and Usage](https://fuwari.vercel.app/posts/markdown-extended/#github-repository-cards))
-- Enhanced code blocks with Expressive Code ([Preview](https://fuwari.vercel.app/posts/expressive-code/) / [Docs](https://expressive-code.com/))
+> 📖 更详细的本地启动、写文章、改配置、部署步骤见 [使用指南.md](./使用指南.md)。
 
-## ⚡ Commands
+## 🔧 常用自定义入口
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                    | Action                                              |
-|:---------------------------|:----------------------------------------------------|
-| `pnpm install`             | Installs dependencies                               |
-| `pnpm dev`                 | Starts local dev server at `localhost:4321`         |
-| `pnpm build`               | Build your production site to `./dist/`             |
-| `pnpm preview`             | Preview your build locally, before deploying        |
-| `pnpm check`               | Run checks for errors in your code                  |
-| `pnpm format`              | Format your code using Biome                        |
-| `pnpm new-post <filename>` | Create a new post                                   |
-| `pnpm astro ...`           | Run CLI commands like `astro add`, `astro check`    |
-| `pnpm astro --help`        | Get help using the Astro CLI                        |
-
-## ✏️ Contributing
-
-Check out the [Contributing Guide](https://github.com/saicaca/fuwari/blob/main/CONTRIBUTING.md) for details on how to contribute to this project.
+- 站点标题 / 副标题 / 主题色 / 导航 / 头像 / 头图轮播 / 头图标题文字 → `src/config.ts`
+- 关于页内容 → `src/content/spec/about.md`
+- 歌单 → `src/pages/music.astro` 顶部的 `playlists`
+- 部署域名 → `astro.config.mjs` 的 `site`
 
 ## 📄 License
 
-This project is licensed under the MIT License.
-
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fsaicaca%2Ffuwari.svg?type=large&issueType=license)](https://app.fossa.com/projects/git%2Bgithub.com%2Fsaicaca%2Ffuwari?ref=badge_large&issueType=license)
+文章内容采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)。
+主题基于 [Fuwari](https://github.com/saicaca/fuwari)（MIT）二次开发。

@@ -192,6 +192,35 @@ const bannerOffset =
 		@apply opacity-0 -translate-y-16
 	}
 }
+
+/* 让所有开启 banner 的页面都用首页的"大屏"几何（原本只有首页生效，子页只有窄条）。
+   这些规则不在 @layer 内，优先级高于 Fuwari 的 @layer 默认规则，从而覆盖子页的小 banner 行为。 */
+.enable-banner #banner-wrapper {
+	transform: translateY(var(--banner-height-extend));
+}
+.enable-banner #banner {
+	transform: translateY(0);
+}
+.enable-banner #main-grid {
+	transform: translateY(var(--banner-height-extend));
+}
+.enable-banner #sidebar-sticky {
+	top: calc(1rem - var(--banner-height-extend));
+}
+
+/* 头图上的透明导航栏（滚动离开头图后恢复实底），所有 banner 页面通用 */
+#navbar.navbar-transparent .card-base {
+	background: transparent !important;
+	box-shadow: none !important;
+}
+#navbar.navbar-transparent > div:first-child {
+	background: transparent !important;
+}
+#navbar.navbar-transparent .card-base,
+#navbar.navbar-transparent .card-base * {
+	color: white !important;
+	text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
 </style>
 
 <script>
@@ -363,12 +392,30 @@ function showBanner() {
 	banner.classList.remove('opacity-0', 'scale-105');
 }
 
+// 头图上导航栏透明，滚动离开头图后恢复实底（所有开启 banner 的页面通用）
+function updateNavbarTransparency() {
+	const navbar = document.getElementById('navbar')
+	if (!navbar) return
+	const scrollTop = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0
+	// 大屏头图可见高度 ~ BANNER_HEIGHT_HOME vh，预留导航栏高度后切换为实底
+	const threshold = window.innerHeight * (BANNER_HEIGHT_HOME / 100) - 72 - 16
+	if (bannerEnabled && scrollTop < threshold) {
+		navbar.classList.add('navbar-transparent')
+	} else {
+		navbar.classList.remove('navbar-transparent')
+	}
+}
+
 function init() {
 	// disableAnimation()()		// TODO
 	loadTheme();
 	loadHue();
 	initCustomScrollbar();
 	showBanner();
+	updateNavbarTransparency();
+	window.addEventListener('scroll', updateNavbarTransparency, { passive: true });
+	document.addEventListener('scroll', updateNavbarTransparency, { passive: true, capture: true });
+	window.addEventListener('resize', updateNavbarTransparency, { passive: true });
 }
 
 /* Load settings when entering the site */
@@ -432,6 +479,8 @@ const setup = () => {
 		if (heightExtend) {
 			heightExtend.classList.remove('hidden')
 		}
+		// swup 翻页后重新评估导航栏透明状态
+		updateNavbarTransparency()
 	});
 	window.swup.hooks.on('visit:end', (_visit: {to: {url: string}}) => {
 		setTimeout(() => {

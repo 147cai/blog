@@ -5,15 +5,20 @@ import Navbar from "@components/Navbar.astro";
 import SideBar from "@components/widget/SideBar.astro";
 import type { MarkdownHeading } from "astro";
 import { Icon } from "astro-icon/components";
-import ImageWrapper from "../components/misc/ImageWrapper.astro";
 import TOC from "../components/widget/TOC.astro";
-import { siteConfig } from "../config";
+import { bannerImages, bannerText, siteConfig } from "../config";
 import {
 	BANNER_HEIGHT,
 	BANNER_HEIGHT_EXTEND,
 	MAIN_PANEL_OVERLAPS_BANNER_HEIGHT,
 } from "../constants/constants";
+import { url } from "../utils/url-utils";
 import Layout from "./Layout.astro";
+
+// 轮播图片列表：优先用 bannerImages，否则回退到单张 banner.src
+const bannerList =
+	bannerImages.length > 0 ? bannerImages : [siteConfig.banner.src];
+const bannerCycle = bannerList.length * 6; // 每张展示 6s，总循环时长
 
 interface Props {
 	title?: string;
@@ -53,10 +58,40 @@ const mainPanelTop = siteConfig.banner.enable
 
 <!-- Banner -->
 {siteConfig.banner.enable && <div id="banner-wrapper" class={`absolute z-10 w-full transition duration-700 overflow-hidden`} style={`top: -${BANNER_HEIGHT_EXTEND}vh`}>
-    <ImageWrapper id="banner" alt="Banner image of the blog" class:list={["object-cover h-full transition duration-700 opacity-0 scale-105"]}
-                  src={siteConfig.banner.src} position={siteConfig.banner.position}
-    >
-    </ImageWrapper>
+    <div id="banner" class="h-full transition duration-700 opacity-0 scale-105 relative overflow-hidden">
+        <!-- 多图轮播 + 缓慢放大（Ken Burns），仿旧 shoka 主题 -->
+        <div class="banner-carousel absolute inset-0 w-full h-full bg-black">
+            {bannerList.map((src, i) => (
+                <div class="banner-slide absolute inset-0 w-full h-full bg-cover bg-center"
+                     style={`background-image: url('${url(src)}'); animation-delay: ${i * 6}s; animation-duration: ${bannerCycle}s;`}>
+                </div>
+            ))}
+        </div>
+        <!-- 顶部渐变：让透明导航栏的文字在亮色头图上也清晰 -->
+        <div class="banner-top-gradient absolute top-0 left-0 w-full h-28 pointer-events-none z-10"></div>
+        <!-- 头图居中标题文字（仿 shoka，文字在 config.ts 的 bannerText 里编辑） -->
+        {bannerText.enable && (
+            <div class="banner-title absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4 pointer-events-none">
+                {bannerText.titleEn && <p class="banner-title-en">{bannerText.titleEn}</p>}
+                {bannerText.title && <h1 class="banner-title-main">{bannerText.title}</h1>}
+                {bannerText.subtitle && <p class="banner-title-sub">= {bannerText.subtitle} =</p>}
+            </div>
+        )}
+    </div>
+    <!-- 动态波浪分隔（4 层不同透明度横向平移，仿 shoka） -->
+    <div class="banner-waves absolute left-0 w-full pointer-events-none z-20">
+        <svg class="waves-svg" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+            <defs>
+                <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+            </defs>
+            <g class="wave-parallax">
+                <use href="#gentle-wave" x="48" y="0" />
+                <use href="#gentle-wave" x="48" y="3" />
+                <use href="#gentle-wave" x="48" y="5" />
+                <use href="#gentle-wave" x="48" y="7" />
+            </g>
+        </svg>
+    </div>
 </div>}
 
 <!-- Main content -->
@@ -123,3 +158,101 @@ const mainPanelTop = siteConfig.banner.enable
     </div>
 </div>
 </Layout>
+
+<style>
+/* ===== 头图轮播 + 缓慢放大（Ken Burns），仿旧 shoka 主题 ===== */
+.banner-slide {
+    opacity: 0;
+    animation-name: bannerKenBurns;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+@keyframes bannerKenBurns {
+    0%   { opacity: 0; transform: scale(1);    animation-timing-function: ease-in; }
+    2%   { opacity: 1; }
+    8%   { opacity: 1; transform: scale(1.05); animation-timing-function: ease-out; }
+    17%  { opacity: 1; transform: scale(1.1); }
+    25%  { opacity: 0; transform: scale(1.1); }
+    100% { opacity: 0; }
+}
+
+/* 顶部渐变，提升透明导航栏文字可读性 */
+.banner-top-gradient {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0));
+}
+
+/* ===== 头图居中标题文字（仿 shoka） ===== */
+.banner-title {
+    /* 整体上移，居中于头图可见区，避开底部波浪与正文叠压区 */
+    padding-bottom: 16vh;
+    color: #fff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.55), 0 1px 2px rgba(0, 0, 0, 0.45), 0 0 18px rgba(0, 0, 0, 0.25);
+}
+/* 标题后方柔和的深色径向光晕，保证在亮色头图上也有足够对比（非硬框） */
+.banner-title::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 55% 42% at center 42%, rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0) 70%);
+    pointer-events: none;
+    z-index: -1;
+}
+.banner-title-en {
+    font-family: Georgia, "Times New Roman", "Noto Serif SC", "Songti SC", serif;
+    font-size: clamp(1.75rem, 3.6vw, 3rem);
+    line-height: 1.15;
+    letter-spacing: 0.08em;
+    /* 玻璃质感：半透明填充让头图从字里透出，白色描边勾边，深色光晕保证在亮图上也可读 */
+    color: rgba(255, 255, 255, 0.22);
+    -webkit-text-stroke: 1.2px rgba(255, 255, 255, 0.95);
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.55), 0 2px 6px rgba(0, 0, 0, 0.5), 0 0 22px rgba(0, 0, 0, 0.3);
+}
+.banner-title-main {
+    font-size: clamp(1.5rem, 3.4vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.3;
+    margin-top: 0.4rem;
+}
+.banner-title-sub {
+    font-size: clamp(0.8rem, 1.4vw, 1.05rem);
+    letter-spacing: 0.14em;
+    margin-top: 0.9rem;
+    opacity: 0.95;
+}
+@media (max-width: 768px) {
+    .banner-title { padding-bottom: 12vh; }
+    .banner-title-sub { letter-spacing: 0.08em; }
+}
+
+/* ===== 动态波浪分隔 ===== */
+.banner-waves {
+    /* 贴住头图底边：波浪的实色填充一直盖到 banner 最底部，避免波浪与正文之间露出头图 */
+    bottom: 0;
+    line-height: 0;
+}
+.waves-svg {
+    display: block;
+    width: 100%;
+    height: 11vh;
+    min-height: 48px;
+    max-height: 110px;
+}
+.wave-parallax > use {
+    animation: waveMove 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+    fill: var(--page-bg);
+}
+.wave-parallax > use:nth-child(1) { animation-delay: -2s; animation-duration: 7s;  opacity: 0.7; }
+.wave-parallax > use:nth-child(2) { animation-delay: -3s; animation-duration: 10s; opacity: 0.5; }
+.wave-parallax > use:nth-child(3) { animation-delay: -4s; animation-duration: 13s; opacity: 0.3; }
+.wave-parallax > use:nth-child(4) { animation-delay: -5s; animation-duration: 20s; opacity: 1;   }
+@keyframes waveMove {
+    0%   { transform: translate3d(-90px, 0, 0); }
+    100% { transform: translate3d(85px, 0, 0); }
+}
+
+@media (max-width: 768px) {
+    .waves-svg { height: 8vh; }
+}
+</style>
