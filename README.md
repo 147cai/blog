@@ -85,6 +85,13 @@ pnpm new-post 文章名   # 新建一篇文章
 - 歌单 → `src/pages/music.astro` 顶部的 `playlists`
 - 部署域名 → `astro.config.mjs` 的 `site`
 
+## 👥 Contributors
+
+| | 贡献者 | 角色 |
+|---|---|---|
+| <img src="https://github.com/147cai.png" width="40" style="border-radius:50%"> | **[147cai](https://github.com/147cai)** | 博主、内容创作、需求设计 |
+| <img src="https://avatars.githubusercontent.com/u/189039031" width="40" style="border-radius:50%"> | **[Claude](https://claude.ai)** | AI 结对编程、功能开发、样式定制 |
+
 ## 📄 License
 
 文章内容采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)。
