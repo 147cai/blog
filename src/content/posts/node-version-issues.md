@@ -2,7 +2,7 @@
 title: "node 版本问题"
 published: 2023-06-16
 description: "node 版本管理相关问题"
-image: ""
+image: "/cdn/anime/anime-05.jpg"
 tags: ["node", "tool"]
 category: "笔记"
 draft: false

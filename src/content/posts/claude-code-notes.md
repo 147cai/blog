@@ -1,8 +1,8 @@
 ---
 title: "Claude Code 使用记录"
-published: 2026-06-02
+published: 2026-04-02
 description: "记录我学习和使用 Claude Code 的过程，包括安装、常用命令、快捷键和一些实用技巧"
-image: ""
+image: "/cdn/anime/anime-02.jpg"
 tags: ["AI", "tool", "claude"]
 category: "笔记"
 draft: false
@@ -144,7 +144,9 @@ claude --max-turns 3 "帮我修复这个 bug"
 2. **进阶**（5小时）：Skills、Hooks 自动化、MCP 集成、Subagents 任务委派
 3. **高级**（5小时）：Planning 模式、插件开发、CI/CD 集成、Extended Thinking
 
-我现在大概在基础和进阶之间，Hooks 和 MCP 还没有深入研究，后面慢慢补上。
+claude code详细学习教程：
+
+https://github.com/luongnv89/claude-howto/blob/main/zh/LEARNING-ROADMAP.md
 
 ---
 

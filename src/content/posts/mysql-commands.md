@@ -2,7 +2,7 @@
 title: "mysql 常用命令"
 published: 2023-06-16
 description: "mysql 常用命令速查"
-image: ""
+image: "/cdn/anime/anime-06.jpg"
 tags: ["mysql", "tool"]
 category: "笔记"
 draft: false
