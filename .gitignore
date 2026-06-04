@@ -29,3 +29,6 @@ yarn.lock
 # ide
 .idea
 *.iml
+
+# 微信验证截图（本地说明用，不上线）
+public/85EAC3544214810F387DE71D7168F693.jpg
