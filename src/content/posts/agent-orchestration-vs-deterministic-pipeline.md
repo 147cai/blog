@@ -1,7 +1,7 @@
 ---
 title: "多 Agent 编排 vs 确定性流水线：一个 AI 测试平台的架构取舍"
 published: 2026-06-09
-description: "同样是让多个 LLM 协同干活，为什么有的功能该用多 Agent 编排，有的却该退回到固定的流水线？这篇笔记从一个真实项目的纠结出发，提炼出一条可以直接拿来做决策的判据。"
+description: "同样是让多个 LLM 协同干活，为什么有的功能该用多 Agent 编排，有的却该退回到固定的流水线？"
 image: ""
 tags: ["AI", "Agent", "架构", "技术"]
 category: "笔记"

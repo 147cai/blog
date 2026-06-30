@@ -1,7 +1,7 @@
 ---
 title: "GAM 架构实战"
 published: 2026-06-11
-description: "LLM 本身是无状态的，跑长任务会遇到上下文窗口、跨会话延续、重复劳动三个硬约束。这篇讲我参考 GAM 论文给 RuleTest-Agent 落地的一套记忆系统，从底层概念到工程细节，再到怎么迁移到客服业务。"
+description: "LLM 本身是无状态的，跑长任务会遇到上下文窗口、跨会话延续、重复劳动三个硬约束。"
 image: ""
 tags: ["AI", "Agent", "记忆系统", "RAG", "技术"]
 category: "笔记"
