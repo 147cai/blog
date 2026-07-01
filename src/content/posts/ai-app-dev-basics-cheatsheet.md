@@ -1,7 +1,7 @@
 ---
 title: "AI 应用开发基础速查：从 Embedding 到成本优化的十二个知识点"
 published: 2026-06-11
-description: "整理一份 AI 应用开发的基础知识速查，覆盖向量检索、RAG、Function Calling、ReAct、Prompt 工程、流式协议、评估体系、成本优化等十二个高频知识点，每个都配一句话定义和实战挂钩。"
+description: "整理一份 AI 应用开发的基础知识速查。"
 image: ""
 tags: ["AI", "RAG", "Agent", "LLM", "技术"]
 category: "笔记"
