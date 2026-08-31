@@ -135,3 +135,40 @@ return client.retrieve(query, topK, similarityThreshold, null)
 ---
 
 读完这三份代码，我最大的感触是：agentscope-java 团队没有硬撑着把 RAG 做成框架亮点，反而诚实地把它标成 deprecated、转头去接专业系统——这种"知道自己不擅长什么、就别硬造轮子"的判断，比它自己写一套多华丽的 RAG 模块更值得学。
+
+关键证据
+
+1. v1 文档（java.agentscope.io/v1/en/docs/task/rag.html）：RAG 被放在 docs/task/（核心任务/能力）分类下，一个页面里同时讲自建的 SimpleKnowledge（chunking+向量库）和专业平台（Bailian/Dify/RAGFlow），配 GENERIC/AGENTIC 两种接入模式——自建实现和接专业平台是"同一页面里的并列选项"。
+
+2. v2 文档结构变了：RAG 整个挪到了 docs/integration/（第三方集成）分类下，二级菜单是：
+
+RAG Knowledge Base
+├── Overview
+├── Simple          ← 自建实现，现在只是众多选项里的一个
+├── Bailian Knowledge
+├── Dify
+├── HayStack
+└── RAGFlow
+
+从"核心任务"降级成"集成选项之一"，这个分类调整本身就是态度。
+
+1. 官方 v1→v2 迁移指南（java.agentscope.io/v2/zh/docs/change-log.html）原文：
+
+▎ Knowledge、KnowledgeRetrievalTools、RAGMode、GenericRAGHook 全部 @Deprecated(forRemoval = true, since = "2.0.0")
+▎ .knowledge(...) / .knowledges(...) / .ragMode(...) / .retrieveConfig(...) 同步弃用
+▎ v1 实现在 2.0 仍可调用以保兼容，但新代码不要依赖
+▎ v2 架构下的 knowledge base / document reader / store 将在后续 minor 版本上线
+
+最后一句是重点：v2 自己的新一代 RAG 实现还没做出来。所以现阶段"官方推荐"其实是个结果而非宣言——旧的自建方案被标记淘汰，新的自建方案还没交付，中间这段时间，真要做生产可用的 RAG，官方文档摆在你面前的现实选项就是 Bailian/Dify/HayStack/RAGFlow 这几个专业平台的适配器。
+
+1. 我没找到的：官方迁移指南和 GitHub issue #696（"Rebuild the RAG module"）/ PR #800 都没有写"为什么"这么改的显式说明——那句"integrate via middleware/tool layer"是我从 commit message 里读到的，公开文档里没有对应的说法。这一点我之前博客里写的判断（框架否定的是"专属抽象"而不是"RAG 本身"）目前只有源码证据，没有官方文档证据，需要标注清楚这是我的推断，不是官方明说的。
+
+要不要我把这几条官方证据（尤其是 v2 目录结构降级 + 迁移指南原文）补进博客里，把"我推测的"和"官方文档实证的"分开标注一下？
+
+Sources:
+
+- RAG (Retrieval-Augmented Generation) - AgentScope Java v1
+- AgentScope Java v2 Intro
+- V1 迁移指南 - AgentScope Java
+- Rebuild the RAG module in AgentScope · Issue #696
+- PR #800

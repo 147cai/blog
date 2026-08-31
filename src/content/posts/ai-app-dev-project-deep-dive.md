@@ -1,9 +1,9 @@
 ---
-title: "把测试平台的经验迁移到问数与智能客服：我的 AI 应用开发实战复盘"
+title: "我的 AI 应用开发实战复盘"
 published: 2026-06-11
-description: "从 RuleTest-Agent 这个 AI 测试平台出发，复盘双引擎架构、覆盖率反馈闭环、流式链路设计，再把这些经验一条条迁移到 AI 问数（NL2SQL）和智能客服场景。"
+description: "从 RuleTest-Agent 这个 AI 测试平台出发，复盘双引擎架构、覆盖率反馈闭环、流式链路设计，再把这些经验一条条迁移到 AI 问数和智能客服场景。（因为企业使用这两个场景最多）"
 image: ""
-tags: ["AI", "Agent", "RAG", "NL2SQL", "智能客服"]
+tags: ["AI", "Agent", "RAG", "NL2SQL",]
 category: "笔记"
 draft: false
 ---
