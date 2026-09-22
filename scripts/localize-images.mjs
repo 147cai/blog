@@ -32,8 +32,18 @@ let copied = 0;
 let rewritten = 0;
 const missing = [];
 
-for (const file of fs.readdirSync(POSTS).filter((f) => f.endsWith(".md"))) {
-	const fp = path.join(POSTS, file);
+function collectMarkdown(dir) {
+	const out = [];
+	for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+		const fp = path.join(dir, entry.name);
+		if (entry.isDirectory()) out.push(...collectMarkdown(fp));
+		else if (entry.name.endsWith(".md")) out.push(fp);
+	}
+	return out;
+}
+
+for (const fp of collectMarkdown(POSTS)) {
+	const file = path.relative(POSTS, fp);
 	let content = fs.readFileSync(fp, "utf8");
 	let changed = false;
 
