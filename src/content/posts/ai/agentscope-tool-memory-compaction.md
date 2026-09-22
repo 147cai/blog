@@ -4,7 +4,7 @@ published: 2026-07-01
 description: "跟着示例读 AgentScope-Java 的源码，搞清楚三件事：工具调用的 ReAct 循环到底在转什么、对话记忆怎么存、以及我一度理解错的地方——它到底是死板的全量重发，还是也有 GAM 那种带索引的按需检索。"
 tags: ["AgentScope", "Agent", "Java", "记忆系统", "AI 辅助"]
 category: "笔记"
-draft: true
+draft: false
 ---
 
 上手第二天。还是那套学法：边跑示例边读源码，文档当字典查。

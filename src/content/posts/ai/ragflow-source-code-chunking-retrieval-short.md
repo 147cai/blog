@@ -5,7 +5,7 @@ description: "我在搭自己的 Java RAG 项目，把「传统 RAG 心智模型
 image: ""
 tags: ["RAG", "RAGFlow", "架构", "检索", "AI 辅助"]
 category: "笔记"
-draft: false
+draft: true
 ---
 
 我最近在搭自己的 RAG 项目，本来只是想读读 RAGFlow 的源码，抄两个设计过来。结果顺手翻了一眼 `agentscope-java` 自己带的 RAG 模块，愣了一下——它的核心配置类 `RetrieveConfig` 上面标着：
@@ -100,7 +100,7 @@ return client.retrieve(query, topK, similarityThreshold, null)
 把三者的处理方式摆成一张表：
 
 | 维度 | 我原来的心智模型 | agentscope-java（rag-simple） | RAGFlow |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | 切分依据 | 固定窗口滑动切 | 4 种策略，其中"语义切"是段落切的占位别名 | 按文档类型分派策略：表格逐行切、QA整体保留、标题层级树切 |
 | chunk 位置信息 | 通常没有 | `docId`+`chunkId`，位置要自己塞进自定义 `payload` | 内置页码+像素坐标，可裁图，前端能跳转高亮原文 |
 | 检索方式 | 单路向量 Top-K | 单路向量 Top-K（cosine/euclidean二选一） | 全文关键词+向量两阶段混合，应用层统一公式重新算分 |

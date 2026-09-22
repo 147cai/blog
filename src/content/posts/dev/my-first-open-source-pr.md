@@ -4,7 +4,7 @@ published: 2026-07-01
 description: "学 AgentScope-Java 的时候，跑一个官方示例总打印'目录还没创建'。我觉得不对劲，让 Claude 别急着改、先深度定位，结果挖出两个真 bug，顺手提了人生第一个开源 PR。记一下这个过程。"
 tags: ["开源", "PR", "AgentScope", "成长", "AI 辅助"]
 category: "笔记"
-draft: true
+draft: false
 ---
 
 今天提了人生第一个开源 PR，给阿里的 AgentScope-Java 框架。
